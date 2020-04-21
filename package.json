@@ -1,0 +1,22 @@
+{
+  "name": "chit-chat",
+  "version": "1.0.0",
+  "description": "it is a data sharing web portal",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gourav-24/ChitChat.git"
+  },
+  "author": "Gourav",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gourav-24/ChitChat/issues"
+  },
+  "homepage": "https://github.com/gourav-24/ChitChat#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
