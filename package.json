@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/gourav-24/ChitChat#readme",
   "dependencies": {
+    "ejs": "^3.0.2",
     "express": "^4.17.1",
     "mongoose": "^5.9.10"
   }
