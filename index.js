@@ -2,6 +2,10 @@ const express = require('express');
 const app = express();
 const Port = 8000;
 const db = require('./config/mongoose');
+const session = require('express-session');
+const passport = require('passport');
+const passportLocalStrategy = require('./config/passport-local-strategy');
+const mongoStore = require('connect-mongo')(session);
 
 
 
@@ -11,6 +15,25 @@ app.use(express.static('./assets'));
 
 app.set('view engine','ejs');
 app.set('views','./views');
+
+app.use(session({
+    name: "ChitChat",
+    secret: 'blahsomething',  //  TODO: change secret before deployment
+    saveUninitialized :false,
+    resave:false,
+    cookie:{
+        maxAge:(1000*60*100)
+    },
+    store : new mongoStore({
+        mongooseConnection :db,
+        autoRemove:'disabled'
+    },function(err){
+        console.log(err || 'connect mongo db setup Ok');
+    })
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(passport.setAuthenticatedUser); //it will check if session cookie is present if present then that user is set into locals
 
 
 app.use('/',require('./routes/index'));

@@ -13,6 +13,9 @@ module.exports.profile = function(req,res){
 
 module.exports.Sign_up = function(req,res){
     try{
+        if(req.isAuthenticated()){
+            return res.redirect('/users/profile');
+        }
         return res.render('sign_up');
 
     }catch(err){
@@ -24,6 +27,9 @@ module.exports.Sign_up = function(req,res){
 
 module.exports.Sign_In = function(req,res){
     try{
+        if(req.isAuthenticated()){
+            return res.redirect('/users/profile');
+        }
         return res.render('sign_In');
 
     }catch(err){
@@ -72,9 +78,11 @@ module.exports.create = function(req,res){
 }
 
 //creating session for user which is signing in
-module.exports.createSession = function(req,res){
+module.exports.createSession = async function(req,res){
     try{ //it is authenticated via passport when route is being processed in user.js in routes
-        console.log("when user gets authenticated redirect it to users/profile and render their data");
+        let user = await User.findOne({email :req.body.email});
+
+        return res.redirect('/users/profile/'+user.id);
 
     }catch(err){
         console.log("error in loading createSession controller",err);
@@ -88,7 +96,8 @@ module.exports.createSession = function(req,res){
 // logging out the user or destroying its session
 module.exports.destroySession = function(req,res){
     try{
-        console.log("log out the user using passpsrt js and redirect the user to sign in page");
+        req.logout(); // method by passport
+        return res.redirect('/');
 
     }catch(err){
         console.log("error in loading destroySession controller",err);

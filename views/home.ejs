@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+
+    <% if(locals.user){ %>
+        <div>
+            <h1>
+                This is home page
+            </h1>
+        </div>
+        <a href="/users/sign-out">sign out</a>
+
+    <% }else{ %>
+        <a href="/users/sign-in">sign in</a>
+        <a href="/users/sign-up">sign up</a>
+    
+    <% } %>    
+    
+</body>
+</html>
