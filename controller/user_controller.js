@@ -1,3 +1,5 @@
+const User = require('../models/user');
+
 module.exports.profile = function(req,res){
     try{
         res.send('<h1>This is users profile page </h1>');
@@ -11,7 +13,7 @@ module.exports.profile = function(req,res){
 
 module.exports.Sign_up = function(req,res){
     try{
-        res.send('<h1>This is Sign Up page </h1>');
+        return res.render('sign_up');
 
     }catch(err){
         console.log("error in loading Sign Up controller",err);
@@ -22,7 +24,7 @@ module.exports.Sign_up = function(req,res){
 
 module.exports.Sign_In = function(req,res){
     try{
-        res.send('<h1>This is Sign In page </h1>');
+        return res.render('sign_In');
 
     }catch(err){
         console.log("error in loading Sign In controller",err);
@@ -34,12 +36,35 @@ module.exports.Sign_In = function(req,res){
 //for creating new user
 module.exports.create = function(req,res){
     try{
-        console.log("Please create new user in DB");
+        if(req.body.password != req.body.conformPassword){
+            return res.redirect('back');   
+        }
 
-        return res.redirect('back');
+        User.findOne({email:req.body.email},function(err,user){
+            if(err){
+                console.log('error in finding user in create method of user controller',err);
+                return;
+            }
+
+            if(!user){
+                User.create(req.body,function(err,user){
+                    
+                    if(err){
+                        console.log('error in finding user in create method of user controller',err);
+                    return;
+                    }
+
+                });
+                return res.redirect('/users/sign-in');
+
+            }else{
+                return res.redirect('/users/sign-in');
+            }
+
+        });
 
     }catch(err){
-        console.log("error in loading create user controller",err);
+        console.log("error in loading create method in user controller",err);
         return res.redirect('back');
 
     }
@@ -48,7 +73,7 @@ module.exports.create = function(req,res){
 
 //creating session for user which is signing in
 module.exports.createSession = function(req,res){
-    try{
+    try{ //it is authenticated via passport when route is being processed in user.js in routes
         console.log("when user gets authenticated redirect it to users/profile and render their data");
 
     }catch(err){
