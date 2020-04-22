@@ -78,14 +78,12 @@ module.exports.create = function(req,res){
 }
 
 //creating session for user which is signing in
-module.exports.createSession = async function(req,res){
+module.exports.createSession =  function(req,res){
     try{ //it is authenticated via passport when route is being processed in user.js in routes
-        let user = await User.findOne({email :req.body.email});
-
-        return res.redirect('/users/profile/'+user.id);
+        return res.redirect('/');
 
     }catch(err){
-        console.log("error in loading createSession controller",err);
+        console.log("error in loading createSession method of user controller",err);
 
         return res.redirect('back');
 
