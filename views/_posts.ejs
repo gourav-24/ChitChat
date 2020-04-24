@@ -10,3 +10,17 @@
         <%= post.user.name %>
     </small>
 </li>
+
+<div>
+    
+    <form action="/comment/create" method="POST">
+    <textarea name="content"  cols="15" rows="2" placeholder="comment.."></textarea>
+    <input type="hidden" name="id" value="<%= post.id %>">
+    <button type="submit">Comment</button>
+    </form>
+    <ul>
+        <% for(comment of post.comments ){%>
+            <%- include('_comments'); %>
+        <% } %>
+    </ul>
+</div>
