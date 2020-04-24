@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Document</title>
+    <title><%= title %></title>
 </head>
 <body>
 
-    <% if(locals.user){ %>
-        <div>
-            <h1>
-                This is home page
-            </h1>
-        </div>
+    <% if(locals.user){ %> 
+        
+        
+<div>
+    
+    <form action="/post/create" method="POST" enctype="multipart/form-data">
+        <input type="file" name="picture" placeholder="Choose image" required>
+        <textarea name="content" id="" cols="30" rows="10" placeholder="what you want to write!!"  required></textarea>
+        <input type="hidden" name="user_id" value="<%= locals.user._id %>">
+        <button type="submit"> Post it </button>
+    
+    </form>
+
+    <ul>
+        <% for (post of posts){ %>
+            <%- include('_posts'); %>
+        <% } %>
+    </ul>
+</div>
+        
         <a href="/users/sign-out">sign out</a>
 
     <% }else{ %>

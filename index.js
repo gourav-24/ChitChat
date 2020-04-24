@@ -14,6 +14,8 @@ const passportGoogle =require('./config/passport-google-oauth-2-Strategy');
 app.use(express.urlencoded()); // to parse or convert form data of post method
 app.use(express.static('./assets'));
 
+app.use('/uploads',express.static(__dirname+'/uploads'));
+
 app.set('view engine','ejs');
 app.set('views','./views');
 

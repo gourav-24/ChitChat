@@ -1,0 +1,12 @@
+<li>
+    <% if(locals.user && locals.user.id == post.user.id ){ %>
+        
+    <a href="/post/destroy/<%= post._id %>">X</a>
+
+    <% } %>
+    <img src="<%= post.picture %>" alt="posts image" width="100px">
+    <%= post.content %>
+    <small>
+        <%= post.user.name %>
+    </small>
+</li>
