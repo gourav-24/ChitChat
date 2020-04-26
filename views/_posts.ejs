@@ -7,7 +7,7 @@
     <img src="<%= post.picture %>" alt="posts image" width="100px">
     <%= post.content %>
     <small>
-        <%= post.user.name %>
+       <a href="/users/profile/<%= post.user._id %>"><%= post.user.name %></a> 
     </small>
 </li>
 

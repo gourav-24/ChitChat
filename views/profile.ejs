@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title><%= user_visited.name %></title>
+</head>
+<body>
+
+    
+    <%- include('_header'); %> <br>
+
+        
+    <img id="avatar" src="<%= user_visited.avatar %>" alt="<%= user_visited.name %>" height="100px" width="100px" > <br>
+    <h1 style="text-align:center;"><%= user_visited.name %></h1> <br>
+
+    <p>
+        <h1>This is about</h1>
+
+    </p>
+
+
+    <form action="/users/update/<%= user.id %>" enctype="multipart/form-data" method="POST">
+        <input type="hidden" name="name" value="<%= user_visited.name  %>" >
+        <input type="hidden" name="email" value="<%= user_visited.email %>" >
+        <label for="avatar"> Profile Image </label><br>
+        <input type="file" name="avatar" placeholder="Profile picture">
+        <button type="submit">Submit</button>
+    
+    </form>
+
+
+    
+    <ul>
+        <% for (post of posts){ %>
+            <li>
+                <% if((locals.user)&&( locals.user.id == post.user.id )){ %>
+                    <small>
+                        <a class="delete-post-button" href="/post/destroy/<%= post._id %>"> x </a>
+                    </small>
+                <% } %>              
+                <img src="<%= post.picture %>" alt="posts image" width="100px">
+                <%= post.content %>
+                <small>
+                   <a href="/users/profile/<%= post.user._id %>"><%= post.user.name %></a> 
+                </small>
+                <ul>
+                    <form action="/comment/create" method="POST">
+                        <textarea name="content"  cols="15" rows="2" placeholder="comment.."></textarea>
+                        <input type="hidden" name="id" value="<%= post.id %>">
+                        <button type="submit">Comment</button>
+                        </form>
+                    <% for(comment of post.comments ){%>
+                        <%- include('_comments'); %>
+                    <% } %>
+                </ul>
+                
+                
+
+
+
+            </li>
+        <% } %>
+    </ul>
+
+
+
+
+
+    
+</body>
+</html>

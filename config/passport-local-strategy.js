@@ -3,7 +3,8 @@ const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/user');
 
 passport.use( new LocalStrategy({
-    usernameField:'email'
+    usernameField:'email',
+    passReqToCallback:true
 },function(email,password,done){
     User.findOne({email : email},function(err,user){
         if(err){
@@ -20,7 +21,7 @@ passport.use( new LocalStrategy({
 }));
 
 passport.serializeUser(function(user,done){
-    done(null,user.id);
+    return done(null,user.id);
 
 });
 
@@ -45,7 +46,8 @@ passport.checkAuthentication = function(req,res,next){
 
 passport.setAuthenticatedUser = function(req,res,next){
     if(req.isAuthenticated()){   
-        res.locals.user =req.user;  // here we are putting user in local object of res for urture use since req is handeled by passport 
+        res.locals.user =req.user;  // here we are putting user in local object of res for future use since req is handeled by passport 
+    
     }
     next();
 

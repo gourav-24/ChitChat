@@ -11,11 +11,8 @@ module.exports.create = async function(req,res){
                 user :req.user._id,
                 Post: post._id
             });
-            console.log(comment);
             post.comments.push(comment);
             post.save();
-            
-           console.log(post.comments);
             return res.redirect('back');
         }
 
@@ -32,14 +29,13 @@ module.exports.create = async function(req,res){
 }
 module.exports.destroy = async function(req,res){
     try{
-        console.log(req.params);
         let comment = await Comment.findById(req.params.id);
         let post = await Post.findById(comment.Post);
         if((comment.user == req.user.id) || (post.user == req.user.id)){  
             let postid = comment.Post;  
             comment.remove();
 
-            await Post.findById(postid ,{$pull :{Comment : req.params.id}});
+            Post.findById(postid ,{$pull :{comment : req.params.id}});
             return res.redirect('back');
             
 

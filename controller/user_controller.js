@@ -1,8 +1,20 @@
 const User = require('../models/user');
+const Post = require('../models/post');
 
-module.exports.profile = function(req,res){
+module.exports.profile = async function(req,res){
     try{
-        res.send('<h1>This is users profile page </h1>');
+
+        let user_req = await User.findById(req.params.id);
+        let post = await Post.find({user:user_req._id}).populate('user').populate({
+            path:'comments',
+            populate:{
+                path: 'user'
+            }
+        });
+        res.render('profile',{
+            user_visited : user_req,
+            posts :post
+        });
 
     }catch(err){
         console.log("error in loading profile controller",err);
@@ -106,18 +118,34 @@ module.exports.destroySession = function(req,res){
 }
 
 //updating avatar of user
-module.exports.update = function(req,res){
-    try{
-        console.log("update avatar file link to user model");
-        
-        
-        return res.redirect('back');
-
-    }catch(err){
-        console.log("error in loading profile controller",err);
-        return res.redirect('back');
-
-    }
+module.exports.update = async function(req,res){
+    if (req.user.id == req.params.id) {
+        try {
+          
+            let user = await User.findById(req.params.id);
+            User.uploadedAvatar(req, res, function(err) {       
+              if (err) {
+                console.log("error in upladedAvatar of user", err);
+              return err;
+              }
+              user.name = req.body.name;        
+              user.email = req.body.email;
+              if (req.file) {
+                user.avatar = User.avatarPath + '/' + req.file.filename;
+              }
+              user.save();
+              console.log(user.avatar);
+            });
+          
+           return res.redirect("back");
+        } catch (err) {
+          console.log("error in update method of user controller of user", err);
+          return res.redirect("back");
+        }
+      }else{
+        console.log("unauthorized");
+        return res.status(401).send("unauthorized");
+      }
 
 }
 

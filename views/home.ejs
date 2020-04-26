@@ -4,9 +4,10 @@
     <title><%= title %></title>
 </head>
 <body>
+    
 
     <% if(locals.user){ %> 
-        
+        <%- include('_header'); %>        
         
 <div>
     
@@ -24,9 +25,6 @@
         <% } %>
     </ul>
 </div>
-        
-        <a href="/users/sign-out">sign out</a>
-
     <% }else{ %>
         <a href="/users/sign-in">sign in</a>
         <a href="/users/sign-up">sign up</a>
