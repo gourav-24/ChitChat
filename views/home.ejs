@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
     <title><%= title %></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    
+
 </head>
 <body>
     
@@ -11,7 +14,7 @@
         
 <div>
     
-    <form action="/post/create" method="POST" enctype="multipart/form-data">
+    <form action="/post/create" id="new-post-form" method="POST" enctype="multipart/form-data">
         <input type="file" name="picture" placeholder="Choose image" required>
         <textarea name="content" id="" cols="30" rows="10" placeholder="what you want to write!!"  required></textarea>
         <input type="hidden" name="user_id" value="<%= locals.user._id %>">
@@ -25,6 +28,15 @@
         <% } %>
     </ul>
 </div>
+<script src="/js/toggle_likes.js"></script>
+<script>
+    $('.toggle-like-button').each(function(){
+        let self = this;
+        let toggleLike = new ToggleLikes(self);
+
+    });
+</script>
+
     <% }else{ %>
         <a href="/users/sign-in">sign in</a>
         <a href="/users/sign-up">sign up</a>
