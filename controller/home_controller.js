@@ -19,10 +19,7 @@ module.exports.home = async function(req, res){
             posts : posts,
             title : 'Home'
         });
-
     }catch(err){
         console.log('error in loading home controller');
-
     }
-
 }

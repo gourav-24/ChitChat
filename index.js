@@ -7,14 +7,23 @@ const passport = require('passport');
 const passportLocalStrategy = require('./config/passport-local-strategy');
 const mongoStore = require('connect-mongo')(session);
 const passportGoogle =require('./config/passport-google-oauth-2-Strategy'); 
+const SassMiddleware = require('node-sass-middleware');
 
 
+app.use(SassMiddleware({
+    src : './assets/scss',
+    dest : './assets/css',
+    debug : true,
+    outputStyle: 'extended',
+    prefix : '/css'
 
+}));
 
 app.use(express.urlencoded()); // to parse or convert form data of post method
 app.use(express.static('./assets'));
 
 app.use('/uploads',express.static(__dirname+'/uploads'));
+app.use('/app',express.static(__dirname+'/app'));
 
 app.set('view engine','ejs');
 app.set('views','./views');

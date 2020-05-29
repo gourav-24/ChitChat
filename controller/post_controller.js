@@ -14,7 +14,7 @@ module.exports.create = async function(req,res){
 
             Post.create({
                 content: req.body.content,
-                user: req.body.user_id,
+                user: req.user._id,
                 picture: Post.imagePath +'/'+ req.file.filename
             });
 

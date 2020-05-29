@@ -1,0 +1,182 @@
+body{
+    margin:0;
+    font-family: sans-serif;
+
+    header{
+        
+
+        height: 160px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        #logo{
+            height:50px ;
+            width: 50px;
+            border: 1px solid black;
+            border-radius: 40px;
+            overflow: hidden;
+            img{
+                height: 50px;
+                width: 50px;
+
+            }
+      
+        }
+        div{
+            height: auto;
+            width: auto;
+            font-family:cursive ;
+            font-size: 24px;
+            margin:0px 15px 0px 15px;
+        }
+
+
+    }
+
+
+    
+    #page-area{
+        height: 90%vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        #area-used{
+            height: 500px;
+            width:700px;
+
+            display: flex;
+            #changing-image{
+                height: 498px;
+                width: 400px;
+                border: 1px solid black;
+                border-radius: 35px;
+                overflow: hidden;
+                box-shadow: 1px 1px 10px 2px grey;
+                img{
+                    height: 500px;
+                    width: 400px;
+                    
+                }
+
+            }
+            #signup-form{
+                height: 480px;
+                width:280px;
+                border: 1px solid black;
+                margin:10px;
+                box-shadow: 1px 1px 10px 2px grey;
+
+                form{
+                    
+                border: 1px solid black;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+                height: 100%;
+                width:100%;
+
+                    .input-1{
+                        width:80%;
+                        position: relative;
+                        height: 50px;
+                        overflow: hidden;
+                        input{
+                            height: 100%;
+                            width: 100%;
+                            color: #595f6e;
+                            border: none;
+                            padding-top: 10px;
+                            outline: none;
+                        }
+
+                        label{
+                            position: absolute;
+                            bottom: 0px;
+                            left: 0px;
+                            height: 100%;
+                            width:100%;
+                            pointer-events: none;
+                            border-bottom:1px solid black;
+                        }
+
+                        label::after{
+                            content: "" ;
+                            
+                            position: absolute;
+                            
+                            height: 100%;
+                            width:100%;
+                            border-bottom: 3px solid #6bc4f8;
+                            left: 0px;
+                            bottom:-1px;
+                            transform: translateX(100%);
+                        }
+
+                        .content-name{
+                            position: absolute;
+                            bottom: 5px;
+                            left:0px;
+                            transition: all 0.3s ease;
+                        }
+
+                        input:focus + .label-name .content-name,
+                        input:valid + .label-name .content-name{
+                            transform:translateY(-150%);
+                            font-size: 14px;
+                            color:#50b2eb;
+                        }
+
+                        input:focus + label::after, input:valid + label::after{
+                            transform:translateX(0%) ;
+                            transition:all 0.3s ease ;
+                        }
+
+    
+                    }
+
+                }
+
+                input[type="submit"]{
+                    display: none;
+
+                }
+
+                #submit-label{
+                    padding: 5px 15px 5px 15px;
+                    border: 1px solid black;
+                    border-radius:5px;
+                }
+
+                #submit-label:hover{
+                    color: white;
+                    background-color: #50b2eb ;
+
+                }
+
+                
+
+
+
+            }
+        }
+    }
+
+    footer{
+        height:80px;
+        width: 100%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        div{
+            height:30px;
+            width:auto;
+            margin: 20px;
+            
+        
+        }
+    }
+}

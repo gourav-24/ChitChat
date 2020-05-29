@@ -5,10 +5,10 @@
 </head>
 <body>
 
-    
+
     <%- include('_header'); %> <br>
 
-        
+
     <img id="avatar" src="<%= user_visited.avatar %>" alt="<%= user_visited.name %>" height="100px" width="100px" > <br>
     <h1 style="text-align:center;"><%= user_visited.name %></h1> <br>
 
@@ -24,11 +24,11 @@
         <label for="avatar"> Profile Image </label><br>
         <input type="file" name="avatar" placeholder="Profile picture">
         <button type="submit">Submit</button>
-    
+
     </form>
 
 
-    
+
     <ul>
         <% for (post of posts){ %>
             <li>
@@ -54,9 +54,6 @@
                 </ul>
                 
                 
-
-
-
             </li>
         <% } %>
     </ul>
@@ -65,6 +62,6 @@
 
 
 
-    
+
 </body>
-</html>
+</html> 

@@ -1,19 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="../uploads/picture-1590430559977" type="image/x-icon">
+
+
+
+    <link rel="stylesheet" href="/css/signUp.css">
     <title>Sign Up</title>
 </head>
 <body>
+    <header>
+        <div style="margin-top: 20px; " id="logo">
+            <img  src="../uploads/picture-1590430208540" alt="logo">
+        </div>
+        <div>
+            <h1>
+                noteal
+            </h1>
+        </div>
+    </header>
 
-    <form action="/users/create" method="POST">
-    <input type="text" name="name" placeholder="First name" required><br>
-    <input type="email" name="email" placeholder="Your email" required><br>
-    <input type="password" name="password" placeholder="set password" required><br>
-    <input type="password" name="conformPassword" placeholder="confirm password" required><br>
-    <button type="submit">Sign Up</button><br>
-    <a style="text-decoration:none;" href="/users/sign-in">Sign In</a><br>
-    </form>
-    <a href="/users/auth/google">Sign-in via google</a>
+
+    <div id="page-area">
+        <div id="area-used">
+            <div id="changing-image">
+                <img src="../uploads/picture-1590399816613" alt="Iphone's image">
+            </div>
+            <div id="signup-form">
+
+                
+                
+                <form action="/users/create" method="POST">
+                    <div>
+                        <h3>Sign up form </h3>
+                    </div>
+                    <div class="input-1">
+    
+                            <input id="name-input" type="text" name="name"  autocomplete="off" required>
+                            <label for="name-input" class="label-name" >
+                                <span class="content-name">
+                                    Name
+                                </span>
+                            </label>
+                            
+    
+                    </div>
+
+                        <div class="input-1">
+                            <input type="email" id="name-input" autocomplete="off" name="email"  required>
+                            <label for="name-input" class="label-name" >
+                                <span class="content-name">
+                                    E-mail
+                                </span>
+                            </label>
+                            
+    
+                        </div>
+
+                        <div class="input-1">
+                            <input type="password" id="name-input" autocomplete="off" name="password"  required>
+                            <label for="name-input" class="label-name" >
+                                <span class="content-name">
+                                    Password
+                                </span>
+                            </label>
+                            
+    
+                        </div>
+
+                        <div class="input-1">
+                            <input type="password" id="name-input" autocomplete="off" name="conformPassword"  required>
+                            <label for="name-input" class="label-name" >
+                                <span class="content-name">
+                                    Confirm Password
+                                </span>
+                            </label>
+                            
+    
+                        </div>
+                        
+                        <div>
+                            <label  id="submit-label" for="submit">Sign Up</label>
+                            <input id="submit" type="submit">
+
+                        </div>
+
+                         <div>
+                            <a style="text-decoration:none;  color:#6bc4f8;" href="/users/sign-in">Sign In</a><br>
+    
+                        </div> 
+                         
+                        <div>
+                            <a style="text-decoration:none;  color:#6bc4f8;" href="/users/auth/google">Sign-in via google</a>
+
+                        </div>
+    
+                    </div>
+                </form>
+    
+    
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div>
+            <h4>
+                About
+            </h4>
+            
+        </div>
+        <div>
+            <h4>
+                Contact Us
+            </h4>
+
+        </div>
+        <div>
+            <h4>
+                Privacy Policy
+            </h4>
+
+        </div>
+        <div>
+            <h4>&copy; 2020</h4>
+            
+        </div>
+    </footer>
+    
+
+    
+
     
 </body>
 </html>

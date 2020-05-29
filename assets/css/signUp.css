@@ -1,0 +1,119 @@
+body {
+  margin: 0;
+  font-family: sans-serif; }
+  body header {
+    height: 160px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    body header #logo {
+      height: 50px;
+      width: 50px;
+      border: 1px solid black;
+      border-radius: 40px;
+      overflow: hidden; }
+      body header #logo img {
+        height: 50px;
+        width: 50px; }
+    body header div {
+      height: auto;
+      width: auto;
+      font-family: cursive;
+      font-size: 24px;
+      margin: 0px 15px 0px 15px; }
+  body #page-area {
+    height: 90%vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    body #page-area #area-used {
+      height: 500px;
+      width: 700px;
+      display: flex; }
+      body #page-area #area-used #changing-image {
+        height: 498px;
+        width: 400px;
+        border: 1px solid black;
+        border-radius: 35px;
+        overflow: hidden;
+        box-shadow: 1px 1px 10px 2px grey; }
+        body #page-area #area-used #changing-image img {
+          height: 500px;
+          width: 400px; }
+      body #page-area #area-used #signup-form {
+        height: 480px;
+        width: 280px;
+        border: 1px solid black;
+        margin: 10px;
+        box-shadow: 1px 1px 10px 2px grey; }
+        body #page-area #area-used #signup-form form {
+          border: 1px solid black;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          align-items: center;
+          height: 100%;
+          width: 100%; }
+          body #page-area #area-used #signup-form form .input-1 {
+            width: 80%;
+            position: relative;
+            height: 50px;
+            overflow: hidden; }
+            body #page-area #area-used #signup-form form .input-1 input {
+              height: 100%;
+              width: 100%;
+              color: #595f6e;
+              border: none;
+              padding-top: 10px;
+              outline: none; }
+            body #page-area #area-used #signup-form form .input-1 label {
+              position: absolute;
+              bottom: 0px;
+              left: 0px;
+              height: 100%;
+              width: 100%;
+              pointer-events: none;
+              border-bottom: 1px solid black; }
+            body #page-area #area-used #signup-form form .input-1 label::after {
+              content: "";
+              position: absolute;
+              height: 100%;
+              width: 100%;
+              border-bottom: 3px solid #6bc4f8;
+              left: 0px;
+              bottom: -1px;
+              transform: translateX(100%); }
+            body #page-area #area-used #signup-form form .input-1 .content-name {
+              position: absolute;
+              bottom: 5px;
+              left: 0px;
+              transition: all 0.3s ease; }
+            body #page-area #area-used #signup-form form .input-1 input:focus + .label-name .content-name,
+            body #page-area #area-used #signup-form form .input-1 input:valid + .label-name .content-name {
+              transform: translateY(-150%);
+              font-size: 14px;
+              color: #50b2eb; }
+            body #page-area #area-used #signup-form form .input-1 input:focus + label::after, body #page-area #area-used #signup-form form .input-1 input:valid + label::after {
+              transform: translateX(0%);
+              transition: all 0.3s ease; }
+        body #page-area #area-used #signup-form input[type="submit"] {
+          display: none; }
+        body #page-area #area-used #signup-form #submit-label {
+          padding: 5px 15px 5px 15px;
+          border: 1px solid black;
+          border-radius: 5px; }
+        body #page-area #area-used #signup-form #submit-label:hover {
+          color: white;
+          background-color: #50b2eb; }
+  body footer {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    body footer div {
+      height: 30px;
+      width: auto;
+      margin: 20px; }
