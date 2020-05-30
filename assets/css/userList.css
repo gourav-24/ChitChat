@@ -1,0 +1,52 @@
+.users-list {
+  height: 675px;
+  width: 350px;
+  overflow-y: scroll;
+  border-left: 1px solid grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center; }
+  .users-list .user {
+    height: 80px;
+    width: 300px;
+    box-shadow: 1px 1px 10px 2px grey;
+    border-radius: 5px;
+    margin-top: 20px;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center; }
+    .users-list .user .user-image {
+      height: 60px;
+      width: 60px;
+      margin: 5px;
+      border-radius: 50px;
+      box-shadow: 1px 1px 5px 2px grey;
+      overflow: hidden; }
+      .users-list .user .user-image img {
+        height: 60px;
+        width: 60px; }
+    .users-list .user .user-name {
+      height: 60px;
+      width: 100px;
+      text-transform: capitalize;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .users-list .user .user-name div {
+        height: auto;
+        width: auto; }
+    .users-list .user .add-req {
+      height: 45px;
+      width: 100px;
+      padding-top: 7px;
+      text-align: center;
+      margin-right: 10px;
+      background-color: black;
+      color: white;
+      border-radius: 5px;
+      border: 1px solid black; }
+    .users-list .user .add-req:hover {
+      opacity: 0.8; }

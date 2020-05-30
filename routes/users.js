@@ -11,5 +11,6 @@ router.get('/auth/google/callback',passport.authenticate('google',{failureRedire
 router.post('/create',usersController.create);
 router.post('/create-session',passport.authenticate('local',{failureRedirect:'users/sign-in'}),usersController.createSession);
 router.post('/update',usersController.update);
+router.post('/addFollower',usersController.addFollower);
 
 module.exports = router;

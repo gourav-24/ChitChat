@@ -1,0 +1,307 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+
+  #total-area {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    background-color: whitesmoke;
+
+    .post-area {
+      background-color: whitesmoke;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      min-height: 800px;
+      max-height: 70%vh;
+      width: 70%;
+
+      #show-form {
+        text-align: center;
+        padding-top: 6px;
+        margin-top: 100px;
+        height: 35px;
+        width: 100px;
+        border-radius: 5px;
+        transition: 0.3s ease-in-out;
+        background-color: white;
+        box-shadow: 1px 1px 8px 1px grey;
+      }
+
+      #show-form:hover {
+        transform: scale(1.5);
+        background-color: #17202a;
+        color: white;
+      }
+
+      #post-form {
+        height: 210px;
+        width: 500px;
+        overflow: hidden;
+        background-color: white;
+        border-radius: 5px;
+        margin-top: 100px;
+        margin-bottom: 20px;
+        box-shadow: 1px 1px 10px 2px grey;
+        input[type="file"] {
+          display: none;
+        }
+        #file-button {
+          border: 1px solid black;
+          height: 40px;
+          width: 200px;
+          margin-top: 10px;
+          margin-left: 150px;
+          text-align: center;
+          padding-top: 7px;
+          border-radius: 5px;
+
+          color: white;
+          background-color: black;
+          transition: 0.5s ease-in-out;
+        }
+        #file-button:hover {
+          transform: scale(1.5);
+          opacity: 0.9;
+        }
+
+        textarea {
+          margin-top: 20px;
+          margin-left: 135px;
+        }
+        textarea:hover {
+          opacity: 0.7;
+        }
+
+        input[type="submit"] {
+          display: none;
+        }
+
+        #post {
+          border: 1px solid black;
+          height: 30px;
+          width: 100px;
+          margin-top: 10px;
+          padding-top:2px ;
+          margin-left: 200px;
+          text-align: center;
+          border-radius: 5px;
+          background-color: black;
+          color: white;
+        }
+        #post:hover {
+          background-color: white;
+          color: black;
+          opacity: 0.8;
+        }
+      }
+
+      .post {
+        height: auto;
+
+        width: 50%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        background-color: white;
+        border-radius: 1px;
+        box-shadow: 1px 1px 10px 2px grey;
+
+        .post-header {
+          display: flex;
+          width: 100%;
+          flex-direction: row;
+          height: 40px;
+          width: 100%;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid black;
+
+          .delete-post {
+            height: 30px;
+            width: 30px;
+            margin: 5px;
+            padding-left: 5px;
+
+            a {
+              font-weight: bold;
+              text-decoration: none;
+              color: black;
+              transition: 0.3s ease-in-out;
+            }
+
+            a:hover {
+              transform: scale(1.5);
+              text-decoration: none;
+            }
+          }
+
+          #posts-user {
+            height: 30px;
+            width: auto;
+            margin: 5px;
+            padding-left: 5px;
+            font-family: "Montserrat", sans-serif;
+
+            a {
+              padding: 5px;
+              font-weight: bold;
+              text-decoration: none;
+              color: black;
+            }
+          }
+        }
+
+        .post-body {
+          img {
+            height: 400px;
+            width: 100%;
+          }
+        }
+
+        .post-discription-likes {
+          min-height: 20px;
+          max-height: 60px;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          .post-discreption {
+            min-height: 40px;
+            max-height: 80px;
+            width: 350px;
+            padding-left: 10px;
+            padding-top: 5px;
+            color: black;
+
+            a {
+              padding-left: 5px;
+              font-weight: bold;
+              text-decoration: none;
+              color: black;
+            }
+          }
+
+          .post-likes {
+            height: 30px;
+            width: 100px;
+            padding-left: 25px;
+
+            a {
+              text-decoration: none;
+              color: black;
+            }
+          }
+        }
+
+        .post-comment {
+          min-height: 0px;
+          max-height: 150px;
+          width: 100%;
+          overflow-y: scroll;
+
+          .comm-box {
+            min-height: 50px;
+            max-height: auto;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            border-top: 1px solid grey;
+         
+
+            .comm-user {
+              height: auto;
+              width: 100px;
+              text-decoration: none;
+              font-weight: bold;
+              overflow: hidden;
+              padding-left: 5px;
+              a{
+                color: black;
+              }
+            }
+
+            .comm-content {
+              min-height: 40px;
+              max-height: auto;
+              overflow: hidden;
+              word-wrap: break-word;
+              width: 100%;
+              padding-top: 5px;
+            }
+
+            .comm-likes {
+              height: 40px;
+              width: 75px;
+              padding-top: 5px;
+              a {
+                text-decoration: none;
+                color: black;
+              }
+
+              a:hover {
+                text-decoration: none;
+                opacity: 0.8;
+              }
+            }
+
+            .comm-delete {
+              height: 40px;
+              width: 25px;
+              padding-top: 7px;
+              a {
+                color: black;
+              }
+              a:hover {
+                opacity: 0.7;
+              }
+            }
+          }
+        }
+
+        .comment-form {
+          height: auto;
+          width: 100%;
+          background-color: white;
+          border-top: 1px solid grey;
+
+          input {
+            width: 80%;
+            border: none;
+            outline: none;
+          }
+
+          input[type="submit"] {
+            display: none;
+          }
+          label {
+            height: 30px;
+            width: 60px;
+            padding-left: 25px;
+            span {
+              margin: 5px;
+            }
+          }
+          label:hover {
+            opacity: 0.8;
+          }
+        }
+      }
+
+      #go-to-top {
+        position: fixed;
+        bottom: 10px;
+        left: 10px;
+        border: 1px solid black;
+      }
+
+      
+
+
+
+    }
+  }
+}

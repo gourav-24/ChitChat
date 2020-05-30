@@ -1,0 +1,220 @@
+body {
+  margin: 0;
+  font-family: sans-serif; }
+  body #total-area {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    background-color: whitesmoke; }
+    body #total-area .post-area {
+      background-color: whitesmoke;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      min-height: 800px;
+      max-height: 70%vh;
+      width: 70%; }
+      body #total-area .post-area #show-form {
+        text-align: center;
+        padding-top: 6px;
+        margin-top: 100px;
+        height: 35px;
+        width: 100px;
+        border-radius: 5px;
+        transition: 0.3s ease-in-out;
+        background-color: white;
+        box-shadow: 1px 1px 8px 1px grey; }
+      body #total-area .post-area #show-form:hover {
+        transform: scale(1.5);
+        background-color: #17202a;
+        color: white; }
+      body #total-area .post-area #post-form {
+        height: 210px;
+        width: 500px;
+        overflow: hidden;
+        background-color: white;
+        border-radius: 5px;
+        margin-top: 100px;
+        margin-bottom: 20px;
+        box-shadow: 1px 1px 10px 2px grey; }
+        body #total-area .post-area #post-form input[type="file"] {
+          display: none; }
+        body #total-area .post-area #post-form #file-button {
+          border: 1px solid black;
+          height: 40px;
+          width: 200px;
+          margin-top: 10px;
+          margin-left: 150px;
+          text-align: center;
+          padding-top: 7px;
+          border-radius: 5px;
+          color: white;
+          background-color: black;
+          transition: 0.5s ease-in-out; }
+        body #total-area .post-area #post-form #file-button:hover {
+          transform: scale(1.5);
+          opacity: 0.9; }
+        body #total-area .post-area #post-form textarea {
+          margin-top: 20px;
+          margin-left: 135px; }
+        body #total-area .post-area #post-form textarea:hover {
+          opacity: 0.7; }
+        body #total-area .post-area #post-form input[type="submit"] {
+          display: none; }
+        body #total-area .post-area #post-form #post {
+          border: 1px solid black;
+          height: 30px;
+          width: 100px;
+          margin-top: 10px;
+          padding-top: 2px;
+          margin-left: 200px;
+          text-align: center;
+          border-radius: 5px;
+          background-color: black;
+          color: white; }
+        body #total-area .post-area #post-form #post:hover {
+          background-color: white;
+          color: black;
+          opacity: 0.8; }
+      body #total-area .post-area .post {
+        height: auto;
+        width: 50%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        background-color: white;
+        border-radius: 1px;
+        box-shadow: 1px 1px 10px 2px grey; }
+        body #total-area .post-area .post .post-header {
+          display: flex;
+          width: 100%;
+          flex-direction: row;
+          height: 40px;
+          width: 100%;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid black; }
+          body #total-area .post-area .post .post-header .delete-post {
+            height: 30px;
+            width: 30px;
+            margin: 5px;
+            padding-left: 5px; }
+            body #total-area .post-area .post .post-header .delete-post a {
+              font-weight: bold;
+              text-decoration: none;
+              color: black;
+              transition: 0.3s ease-in-out; }
+            body #total-area .post-area .post .post-header .delete-post a:hover {
+              transform: scale(1.5);
+              text-decoration: none; }
+          body #total-area .post-area .post .post-header #posts-user {
+            height: 30px;
+            width: auto;
+            margin: 5px;
+            padding-left: 5px;
+            font-family: "Montserrat", sans-serif; }
+            body #total-area .post-area .post .post-header #posts-user a {
+              padding: 5px;
+              font-weight: bold;
+              text-decoration: none;
+              color: black; }
+        body #total-area .post-area .post .post-body img {
+          height: 400px;
+          width: 100%; }
+        body #total-area .post-area .post .post-discription-likes {
+          min-height: 20px;
+          max-height: 60px;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center; }
+          body #total-area .post-area .post .post-discription-likes .post-discreption {
+            min-height: 40px;
+            max-height: 80px;
+            width: 350px;
+            padding-left: 10px;
+            padding-top: 5px;
+            color: black; }
+            body #total-area .post-area .post .post-discription-likes .post-discreption a {
+              padding-left: 5px;
+              font-weight: bold;
+              text-decoration: none;
+              color: black; }
+          body #total-area .post-area .post .post-discription-likes .post-likes {
+            height: 30px;
+            width: 100px;
+            padding-left: 25px; }
+            body #total-area .post-area .post .post-discription-likes .post-likes a {
+              text-decoration: none;
+              color: black; }
+        body #total-area .post-area .post .post-comment {
+          min-height: 0px;
+          max-height: 150px;
+          width: 100%;
+          overflow-y: scroll; }
+          body #total-area .post-area .post .post-comment .comm-box {
+            min-height: 50px;
+            max-height: auto;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            border-top: 1px solid grey; }
+            body #total-area .post-area .post .post-comment .comm-box .comm-user {
+              height: auto;
+              width: 100px;
+              text-decoration: none;
+              font-weight: bold;
+              overflow: hidden;
+              padding-left: 5px; }
+              body #total-area .post-area .post .post-comment .comm-box .comm-user a {
+                color: black; }
+            body #total-area .post-area .post .post-comment .comm-box .comm-content {
+              min-height: 40px;
+              max-height: auto;
+              overflow: hidden;
+              word-wrap: break-word;
+              width: 100%;
+              padding-top: 5px; }
+            body #total-area .post-area .post .post-comment .comm-box .comm-likes {
+              height: 40px;
+              width: 75px;
+              padding-top: 5px; }
+              body #total-area .post-area .post .post-comment .comm-box .comm-likes a {
+                text-decoration: none;
+                color: black; }
+              body #total-area .post-area .post .post-comment .comm-box .comm-likes a:hover {
+                text-decoration: none;
+                opacity: 0.8; }
+            body #total-area .post-area .post .post-comment .comm-box .comm-delete {
+              height: 40px;
+              width: 25px;
+              padding-top: 7px; }
+              body #total-area .post-area .post .post-comment .comm-box .comm-delete a {
+                color: black; }
+              body #total-area .post-area .post .post-comment .comm-box .comm-delete a:hover {
+                opacity: 0.7; }
+        body #total-area .post-area .post .comment-form {
+          height: auto;
+          width: 100%;
+          background-color: white;
+          border-top: 1px solid grey; }
+          body #total-area .post-area .post .comment-form input {
+            width: 80%;
+            border: none;
+            outline: none; }
+          body #total-area .post-area .post .comment-form input[type="submit"] {
+            display: none; }
+          body #total-area .post-area .post .comment-form label {
+            height: 30px;
+            width: 60px;
+            padding-left: 25px; }
+            body #total-area .post-area .post .comment-form label span {
+              margin: 5px; }
+          body #total-area .post-area .post .comment-form label:hover {
+            opacity: 0.8; }
+      body #total-area .post-area #go-to-top {
+        position: fixed;
+        bottom: 10px;
+        left: 10px;
+        border: 1px solid black; }
