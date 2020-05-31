@@ -1,0 +1,211 @@
+body{
+    margin: 0 ;
+
+
+    #display-area{
+        border-top: 1px solid black;
+
+        background-color:white;
+        display: flex;
+        flex-direction: column;
+        height:auto;
+        width:100%;
+        align-items: center;
+        justify-content: center;
+
+
+        
+
+        #avatar{
+            border: 1px solid black;
+            height: 150px;
+            width: 150px;
+            margin-top: 100px;
+            border-radius: 160px;
+            overflow: hidden;
+            box-shadow: 1px 1px 10px 2px grey; 
+            img{
+                height: 150px;
+                width: 150px;
+
+            }
+        }
+        #user-name{
+            text-align: center;
+            text-transform: capitalize;
+
+        }
+
+        #about-sec{
+            width:100%;
+            height:150px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+
+            div{
+                height:150px;
+                width:400px;
+                
+                overflow-wrap: anywhere;
+
+            }
+        }
+
+    }
+
+    #update-button-container{
+        min-height: 60px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-top:1px solid grey;
+
+        #update-button{
+            height:50px;
+            width:300px;
+            border-radius: 2px;
+            border: 1px solid black;
+            box-shadow: 1px 1px 8px 2px grey;
+            transition: 0.3s ease-in-out;
+            div{
+                padding-top: 5px;
+                padding-left: 55px;
+                
+            }
+
+        }
+
+        #update-button:hover{
+            transform:scale(1.05);
+            color:white;
+            background-color: black;
+
+        }
+
+        #update-form{
+            input[type="file"]{
+                display: none;
+            }
+            #avatar-bttn{
+                margin-left:71px;
+                height: 30px;
+                width:100px;
+                border: 1px solid black;
+                color: white;
+                background-color: black;
+                border-radius: 2px;
+                text-align: center;
+            }
+
+            #avatar-bttn:hover{
+                color: white;
+                opacity:0.8;
+            }
+
+            input[type="submit"]{
+                display: none;
+            }
+
+            #update{
+                margin-left: 70px;
+                height: 30px;
+                width:100px;
+                border: 1px solid black;
+                padding-top: 1px;
+                border-radius: 2px;
+                color: white;
+                background-color: black;
+                text-align: center;
+            }
+
+            #update:hover{
+                color: black;
+                background-color:white;
+
+            }
+
+        }
+
+
+
+
+
+    }
+
+
+
+
+    #post-sec{
+        background-color: whitesmoke;
+        min-height: 700px;
+        max-height:100%;
+        border: 1px solid grey;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+
+        #post{
+            margin-top: 50px;
+            height: 540px;
+            width: 400px;
+            box-shadow: 1px 1px 10px 2px grey; 
+            #post-image{
+                img{
+                    
+                height:480px;
+                width:400px;
+
+                }
+            }
+
+            #post-content-like-delete{
+                height: 60px;
+                width: 400px;
+                border: 1px solid black;
+                display: flex;
+                justify-content:space-around;
+                align-items: center;
+
+                #post-content{
+                    
+                    height:auto;
+                    width:280px;
+                    padding-left: 10px;
+
+                }
+                #post-like{
+                    padding-left:22px;
+                    padding-top: 14px;
+                    height:60px;
+                    width:80px;
+                    a{
+                        color:black;
+                    }
+
+                }
+                #post-delete{
+                    height: 60px;
+                    width:30px;
+                    padding-top:14px ;
+                    a{
+                        color:black;
+                    }
+                    
+                }
+            }
+        }
+        
+
+        
+
+    }
+
+
+    
+}
+
+
+

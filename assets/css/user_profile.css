@@ -1,0 +1,126 @@
+body {
+  margin: 0; }
+  body #display-area {
+    border-top: 1px solid black;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    align-items: center;
+    justify-content: center; }
+    body #display-area #avatar {
+      border: 1px solid black;
+      height: 150px;
+      width: 150px;
+      margin-top: 100px;
+      border-radius: 160px;
+      overflow: hidden;
+      box-shadow: 1px 1px 10px 2px grey; }
+      body #display-area #avatar img {
+        height: 150px;
+        width: 150px; }
+    body #display-area #user-name {
+      text-align: center;
+      text-transform: capitalize; }
+    body #display-area #about-sec {
+      width: 100%;
+      height: 150px;
+      text-align: center;
+      display: flex;
+      justify-content: center; }
+      body #display-area #about-sec div {
+        height: 150px;
+        width: 400px;
+        overflow-wrap: anywhere; }
+  body #update-button-container {
+    min-height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid grey; }
+    body #update-button-container #update-button {
+      height: 50px;
+      width: 300px;
+      border-radius: 2px;
+      border: 1px solid black;
+      box-shadow: 1px 1px 8px 2px grey;
+      transition: 0.3s ease-in-out; }
+      body #update-button-container #update-button div {
+        padding-top: 5px;
+        padding-left: 55px; }
+    body #update-button-container #update-button:hover {
+      transform: scale(1.05);
+      color: white;
+      background-color: black; }
+    body #update-button-container #update-form input[type="file"] {
+      display: none; }
+    body #update-button-container #update-form #avatar-bttn {
+      margin-left: 71px;
+      height: 30px;
+      width: 100px;
+      border: 1px solid black;
+      color: white;
+      background-color: black;
+      border-radius: 2px;
+      text-align: center; }
+    body #update-button-container #update-form #avatar-bttn:hover {
+      color: white;
+      opacity: 0.8; }
+    body #update-button-container #update-form input[type="submit"] {
+      display: none; }
+    body #update-button-container #update-form #update {
+      margin-left: 70px;
+      height: 30px;
+      width: 100px;
+      border: 1px solid black;
+      padding-top: 1px;
+      border-radius: 2px;
+      color: white;
+      background-color: black;
+      text-align: center; }
+    body #update-button-container #update-form #update:hover {
+      color: black;
+      background-color: white; }
+  body #post-sec {
+    background-color: whitesmoke;
+    min-height: 700px;
+    max-height: 100%;
+    border: 1px solid grey;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around; }
+    body #post-sec #post {
+      margin-top: 50px;
+      height: 540px;
+      width: 400px;
+      box-shadow: 1px 1px 10px 2px grey; }
+      body #post-sec #post #post-image img {
+        height: 480px;
+        width: 400px; }
+      body #post-sec #post #post-content-like-delete {
+        height: 60px;
+        width: 400px;
+        border: 1px solid black;
+        display: flex;
+        justify-content: space-around;
+        align-items: center; }
+        body #post-sec #post #post-content-like-delete #post-content {
+          height: auto;
+          width: 280px;
+          padding-left: 10px; }
+        body #post-sec #post #post-content-like-delete #post-like {
+          padding-left: 22px;
+          padding-top: 14px;
+          height: 60px;
+          width: 80px; }
+          body #post-sec #post #post-content-like-delete #post-like a {
+            color: black; }
+        body #post-sec #post #post-content-like-delete #post-delete {
+          height: 60px;
+          width: 30px;
+          padding-top: 14px; }
+          body #post-sec #post #post-content-like-delete #post-delete a {
+            color: black; }
