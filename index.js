@@ -9,6 +9,12 @@ const mongoStore = require('connect-mongo')(session);
 const passportGoogle =require('./config/passport-google-oauth-2-Strategy'); 
 const SassMiddleware = require('node-sass-middleware');
 
+const chatServer = require('http').Server(app);
+const chatSockets = require('./config/chat_sockets').chatSockets(chatServer);
+
+chatServer.listen(5000);
+console.log("chat server is listining on port 5000");
+
 
 app.use(SassMiddleware({
     src : './assets/scss',

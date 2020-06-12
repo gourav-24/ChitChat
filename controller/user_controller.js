@@ -12,9 +12,26 @@ module.exports.profile = async function (req, res) {
           path: "user",
         },
       });
+
+      let viewer = await User.findById(req.user.id);
+
+      let is_user_reqInFollowing =await viewer.following.find(u=> u==req.params.id);
+      console.log(is_user_reqInFollowing);
+      let userInFollowing =false;
+      if(is_user_reqInFollowing){
+        console.log('working');
+        userInFollowing=true;
+      }
+      console.log(userInFollowing);
+
+
+
+    
+      
     res.render("profile", {
       user_visited: user_req,
       posts: post,
+      following:userInFollowing
     });
   } catch (err) {
     console.log("error in loading profile controller", err);
@@ -23,7 +40,7 @@ module.exports.profile = async function (req, res) {
 
 module.exports.Sign_up = function (req, res) {
   try {
-    if (req.isAuthenticated()) {
+    if(req.isAuthenticated()) {
       return res.redirect("/users/profile");
     }
     return res.render("sign_up");
@@ -148,7 +165,7 @@ module.exports.addFollower = async function (req, res) {
   try {
     let user = await User.findOne({ _id: req.body.id }); // access the followers list of person you want to follow
 
-    let followerExist = user.followers.find(function (user) {
+    let followerExist = await user.followers.find(function (user) {
       if (user == req.user._id) {
         return user;
       } else {
@@ -177,7 +194,7 @@ module.exports.addFollower = async function (req, res) {
 
     if (followingExist) {
     } else {
-      userReq.following.push(req.user._id);
+      userReq.following.push(req.body.id);
       userReq.save();
     }
 
@@ -190,3 +207,30 @@ module.exports.addFollower = async function (req, res) {
     console.log("error in addFriend method of user controller", err);
   }
 };
+
+
+module.exports.removeFollower = async function(req,res){
+  try{
+    console.log(req.params);
+     let req_user = await User.findById({_id:req.user.id});
+
+    let isExist = await req_user.following.find(u=> u==req.params.id );
+    if(isExist){
+      req_user.following.pull(req.params.id);
+      req_user.save();
+      
+      let user_unfollowed = await User.findById({_id:req.params.id});
+      user_unfollowed.followers.pull(req.user.id);
+      user_unfollowed.save();
+
+    }
+
+
+
+    return res.redirect('back');
+
+
+  }catch(err){
+    console.log('error in remove follower method of user controller',err);
+  }
+}

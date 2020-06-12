@@ -33,7 +33,12 @@ const userSchema = new mongoose.Schema({
     following:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:'User'
+    }],
+    chatRoomList:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'ChatRoom',
     }]
+
 },{timestamps:true});
 
 

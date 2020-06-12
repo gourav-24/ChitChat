@@ -6,10 +6,12 @@ module.exports.home = async function (req, res) {
   try {
     let posts;
     let allUsers;
-    if (req.user) {
-      let UserReq = User.find({ _id: req.user._id });
-      let arrayOfUsers = [req.user._id];
-      arrayOfUsers.unshift(UserReq.following);
+    if (req.user){
+      let userReq = await User.findById(req.user._id);
+      let arrayOfUsers = userReq.following;
+      console.log(arrayOfUsers);
+      arrayOfUsers.unshift(req.user._id);
+      console.log(arrayOfUsers);
 
       posts = await Post.find({ user: { $in: arrayOfUsers } })
         .sort("-createdAt")
@@ -22,11 +24,8 @@ module.exports.home = async function (req, res) {
           },
         })
         .populate("likes");
-      let u = await User.find({});
-      console.log("---", u);
 
       allUsers = await User.find({ _id: { $nin: arrayOfUsers } });
-      console.log(allUsers);
     }
 
     return res.render("home", {
@@ -35,6 +34,6 @@ module.exports.home = async function (req, res) {
       title: "Home",
     });
   } catch (err) {
-    console.log("error in loading home controller");
+    console.log("error in loading home controller",err);
   }
 };

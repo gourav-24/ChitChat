@@ -9,7 +9,7 @@ class AddFriend {
     addFriend = function (id_value,self) {
             $.ajax({
                 type: "post",
-                url: "/users/addFollower",
+                url: "/users/addFollower/"+id_value,
                 data: {id:id_value},
                 success: function (data) {
                     if (data.message) {

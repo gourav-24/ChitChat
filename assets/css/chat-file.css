@@ -1,0 +1,88 @@
+body {
+  margin: 0; }
+  body #page-area {
+    height: 100%vh;
+    width: 100%vw;
+    display: flex;
+    justify-content: center; }
+    body #page-area #userList-ChatBox {
+      height: 675px;
+      width: 850px;
+      margin-top: 100px;
+      display: flex;
+      box-shadow: 1px 1px 10px 2px grey; }
+    body #page-area #ChatBox {
+      height: 100%;
+      width: 500px;
+      display: flex;
+      flex-direction: column; }
+      body #page-area #ChatBox #chat-header {
+        height: 80px;
+        width: 100%;
+        border-bottom: 1px solid grey;
+        display: flex;
+        align-items: center; }
+        body #page-area #ChatBox #chat-header #user-image {
+          height: 60px;
+          width: 60px;
+          margin: 4px 20px 0px 30px;
+          border-radius: 50px;
+          box-shadow: 1px 1px 5px 2px grey;
+          overflow: hidden; }
+          body #page-area #ChatBox #chat-header #user-image img {
+            height: 60px;
+            width: 60px; }
+        body #page-area #ChatBox #chat-header #user-name {
+          height: 60px;
+          text-transform: capitalize;
+          width: auto; }
+      body #page-area #ChatBox #chat-meassages {
+        height: 555px;
+        width: 100%; }
+        body #page-area #ChatBox #chat-meassages #chat-meassages-list {
+          width: 100%;
+          margin-left: 0px; }
+        body #page-area #ChatBox #chat-meassages .other-message {
+          text-align: left;
+          margin: 10px;
+          color: white; }
+          body #page-area #ChatBox #chat-meassages .other-message span {
+            color: white;
+            display: inline-block;
+            padding: 15px;
+            background-color: black;
+            border-radius: 3px;
+            box-shadow: 1px 1px 5px 2px grey; }
+        body #page-area #ChatBox #chat-meassages .self-message {
+          text-align: right;
+          margin: 10px; }
+          body #page-area #ChatBox #chat-meassages .self-message span {
+            color: white;
+            display: inline-block;
+            padding: 15px;
+            background-color: black;
+            border-radius: 3px;
+            box-shadow: 1px 1px 5px 2px grey; }
+      body #page-area #ChatBox #message-form {
+        height: 60px;
+        width: 100%;
+        border-top: 1px solid grey;
+        overflow: hidden; }
+        body #page-area #ChatBox #message-form input[type="submit"] {
+          display: none; }
+        body #page-area #ChatBox #message-form textarea[type="text"] {
+          height: 30px;
+          width: 390px;
+          outline: none;
+          border: none; }
+        body #page-area #ChatBox #message-form label {
+          height: 60px;
+          width: 100px;
+          color: white;
+          background-color: black;
+          padding-left: 30px;
+          padding-top: 18px;
+          box-shadow: 1px 1px 5px 2px grey;
+          border-radius: 5px; }
+        body #page-area #ChatBox #message-form label:hover {
+          opacity: 0.8; }

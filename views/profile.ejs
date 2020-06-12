@@ -41,7 +41,6 @@
             <div>
                 <p>
                     <h3><%= user_visited.about %></h3>
-        
                 </p>
 
             </div>
@@ -52,8 +51,8 @@
         </div>
     </div>
 
-    <% if(locals.user.id == user_visited.id ){ %>
     <div id="update-button-container">
+    <% if(locals.user.id == user_visited.id ){ %>
 
         <div id="update-button">
             <div>
@@ -63,9 +62,16 @@
             
 
         </div>
+        <% }else{ %>
+            <% if(following){ %>
+                <div> <a href="/users/removeFollower/<%= user_visited.id %>">Unfollow</a></div>
+                
+                <% }else{ %>
+                    <div> <a href="/users/addFollower/<%= user_visited.id %>">Follow</a></div>
+                <% } %>
+        <% } %>
+                    
     </div>
-    <% } %>
-    
 
     <div id="post-sec">
     

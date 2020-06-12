@@ -54,7 +54,7 @@
 
     <div class="comment-form" >
         <form action="/comment/create" method="POST">
-            <input name="content" autocomplete="off" placeholder="    your comment.....">
+            <input name="content" type="text" autocomplete="off" placeholder="    your comment.....">
             <input type="hidden" name="id" value="<%= post.id %>">
             <input id="post-comm" type="submit"></input>
             <label for="post-comm">
