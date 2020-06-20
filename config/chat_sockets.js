@@ -50,6 +50,16 @@ async function createMessage(data){
         messageType:"other-message"
 
     });
+
+    Selfmsg.copyMsgID = Othermsg._id;
+    Othermsg.copyMsgID = Selfmsg._id;
+    Selfmsg.save();
+    Othermsg.save();
+    console.log(Selfmsg.copyMsgId);
+    console.log("selfmsg",Selfmsg);
+    console.log("othermsg",Othermsg);
+    console.log("id",Othermsg.copyMsgId);
+
 // store self message in chatroom in which Withuseremail is diff from email of user that sent the message(message sent to with user email)  
     let mapRoom =crooms.map(function(room){
         if(room.withUserEmail == data.user_email ){

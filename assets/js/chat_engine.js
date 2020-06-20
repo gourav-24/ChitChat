@@ -1,7 +1,6 @@
 class ChatEngine {
     constructor(chat_room,email){
         //this.ChatBox = $(`#${chatBoxId}`);
-        console.log("1",chat_room);
         this.UserEmail = email;
          this.RoomCode = chat_room.rc.RoomCode;
         
@@ -17,8 +16,6 @@ connectionHandler(chatRoom){
 
     let self =this;
     this.socket.on('connect',function(){
-        console.log("code",self.RoomCode);
-
         self.socket.emit('join_room', {
             user_email: self.userEmail,
             chat_room : self.RoomCode
@@ -31,10 +28,8 @@ connectionHandler(chatRoom){
 
     });
 
-    console.log("ready");
-    console.log("===>",self.RoomCode);
     $('#send-message').click(function(){
-        console.log('message');
+        
         let msgArea = $('#chat-message')
         let msg =msgArea.val();
 

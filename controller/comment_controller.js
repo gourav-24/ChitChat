@@ -4,9 +4,6 @@ const Like =require('../models/likes');
 // create a new comment 
 module.exports.create = async function(req,res){
     try{
-        console.log(req.params);
-        console.log(req.body);
-        console.log(req.body.content);
     
         let post = await Post.findById(req.body.id);
         if(post){

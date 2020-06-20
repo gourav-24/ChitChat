@@ -37,7 +37,11 @@
       align-items: center; }
       .users-list .user .user-name div {
         height: auto;
-        width: auto; }
+        width: auto;
+        cursor: pointer; }
+        .users-list .user .user-name div a {
+          text-decoration: none;
+          color: black; }
     .users-list .user .add-req {
       height: 45px;
       width: 100px;
@@ -47,6 +51,7 @@
       background-color: black;
       color: white;
       border-radius: 5px;
-      border: 1px solid black; }
+      border: 1px solid black;
+      cursor: pointer; }
     .users-list .user .add-req:hover {
       opacity: 0.8; }

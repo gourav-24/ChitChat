@@ -43,7 +43,7 @@
             </div>
             <div class="user-name">
                 <div>
-                    <%= u1.name %>
+                  <a href="/users/profile/<%= u1._id %>"><%= u1.name %></a>
                 </div>
             </div>
             <div class="add-req" data-id="<%= u1._id %>">
@@ -59,6 +59,9 @@
         </div>
 
         <div id="ChatBox">
+          
+
+
           <div id="message-form">
             <textarea
                 type="text"
@@ -68,24 +71,49 @@
             ></textarea>
             <input type="submit" id="send-button" />
             <label id="send-message" for="send-button">Send</label>
-        </div>
+          </div>
           
+        </div>
+        
+      </div>
+
+    </div>
+
+    <div class="modal-bg">
+      <div  id="modal">
+        <span>
+          <h3>
+            Do u want to delete this chat?
+          </h3>
+
+        </span>
+        <div id="modal-close">+</div>
+        <div id="button-label">
+          <label for="btn"> <a id="link" style="text-decoration: none;" href="/users/chatBox">Delete Chat</a></label>
+
+        </div>
+        <div id="button">
+          <input id="btn" type="submit">
+
         </div>
       </div>
     </div>
 
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
     <script src="/js/chat_profile.js"></script>
-
+     <script src="/js/delete_chat.js"></script>
     <script src="/js/chat_engine.js"></script>
     <script> $('#message-form').hide(); </script>
-
+    <script src="/js/delete_msg.js"></script>
+    
     <script>
       $(".add-req").click(function () {
         var value = this.getAttribute('data-id');
         let roomcode = new ChatProfile(value,"<%= locals.user.email %>");
       });
     </script>
+    
 
     <% }else{ %>
     <a href="/users/sign-in">sign in</a>
