@@ -28,6 +28,8 @@ module.exports.chatBox = async function (req, res) {
 
 module.exports.find = async function (req, res) {
   try {
+    if(req.user){
+      
     console.log("--", req.user.id);
     let askingUser = await User.findById({ _id: req.user.id }).populate(
       "chatRoomList"
@@ -76,13 +78,16 @@ module.exports.find = async function (req, res) {
       askedUser.chatRoomList.push(askedUserRoom);
       askedUser.save();
     }
-
+    
     if (req.xhr) {
       return res.status(200).json({
         message: "chat box found",
         rc: room,
         chat_user: askedUser,
       });
+    }
+
+
     }
   } catch (err) {
     console.log("error in find method of chat_Box controller", err);

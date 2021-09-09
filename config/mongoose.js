@@ -1,5 +1,5 @@
 const mongoose =require('mongoose');
-mongoose.connect('mongodb://localhost/chitchat');
+mongoose.connect('mongodb://localhost/Chit-Chat');
 const db = mongoose.connection;  // require connection of db
 
 // handling error

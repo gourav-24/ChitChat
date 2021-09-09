@@ -92,35 +92,93 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around; }
-    body #post-sec #post {
+    body #post-sec .post {
       margin-top: 50px;
       height: 540px;
       width: 400px;
       box-shadow: 1px 1px 10px 2px grey; }
-      body #post-sec #post #post-image img {
+      body #post-sec .post .post-image img {
         height: 480px;
         width: 400px; }
-      body #post-sec #post #post-content-like-delete {
+      body #post-sec .post .post-content-like-delete {
         height: 60px;
         width: 400px;
         border: 1px solid black;
         display: flex;
         justify-content: space-around;
         align-items: center; }
-        body #post-sec #post #post-content-like-delete #post-content {
+        body #post-sec .post .post-content-like-delete .post-content {
           height: auto;
           width: 280px;
           padding-left: 10px; }
-        body #post-sec #post #post-content-like-delete #post-like {
+        body #post-sec .post .post-content-like-delete .post-like {
           padding-left: 22px;
           padding-top: 14px;
           height: 60px;
           width: 80px; }
-          body #post-sec #post #post-content-like-delete #post-like a {
+          body #post-sec .post .post-content-like-delete .post-like a {
             color: black; }
-        body #post-sec #post #post-content-like-delete #post-delete {
+        body #post-sec .post .post-content-like-delete .post-delete {
           height: 60px;
           width: 30px;
           padding-top: 14px; }
-          body #post-sec #post #post-content-like-delete #post-delete a {
+          body #post-sec .post .post-content-like-delete .post-delete a {
             color: black; }
+  body .modal-bg {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.5s,opacity 0.5s; }
+    body .modal-bg #modal {
+      position: relative;
+      background-color: white;
+      height: 300px;
+      width: 500px;
+      border: 1px solid black;
+      border-radius: 5px; }
+      body .modal-bg #modal #modal-close {
+        height: 10px;
+        width: 15px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        font-size: 42px;
+        transform: rotate(45deg); }
+      body .modal-bg #modal span h3 {
+        margin-top: 80px;
+        text-align: center; }
+      body .modal-bg #modal #button-label {
+        margin-top: 40px;
+        text-align: center; }
+        body .modal-bg #modal #button-label label {
+          height: 30px;
+          width: 200px;
+          padding-top: 3px;
+          color: white;
+          background-color: black;
+          box-shadow: 1px 1px 5px 2px grey;
+          border-radius: 5px;
+          transition: 0.2s ease-in-out; }
+        body .modal-bg #modal #button-label label:hover {
+          padding-top: 1px;
+          background-color: white;
+          box-shadow: 1px 1px 5px 1px #FC4C40;
+          color: #FC4C40;
+          transform: scale(0.98);
+          border: 2px solid #FC4C40; }
+      body .modal-bg #modal #button {
+        text-align: center; }
+        body .modal-bg #modal #button input[type="submit"] {
+          display: none; }
+  body .bg-active {
+    visibility: visible;
+    opacity: 1; }

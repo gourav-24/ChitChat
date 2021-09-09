@@ -1,5 +1,6 @@
 const Message = require('../models/message'); 
 const Chat_room = require('../models/chatRoom'); 
+const User = require('../models/user');
 
 module.exports.chatSockets = function(socketServer){
     let io =require('socket.io')(socketServer);
@@ -55,19 +56,22 @@ async function createMessage(data){
     Othermsg.copyMsgID = Selfmsg._id;
     Selfmsg.save();
     Othermsg.save();
-    console.log(Selfmsg.copyMsgId);
-    console.log("selfmsg",Selfmsg);
-    console.log("othermsg",Othermsg);
-    console.log("id",Othermsg.copyMsgId);
 
 // store self message in chatroom in which Withuseremail is diff from email of user that sent the message(message sent to with user email)  
+    var Nuser =false;
     let mapRoom =crooms.map(function(room){
         if(room.withUserEmail == data.user_email ){
             room.messageList.push(Othermsg);
+            Nuser = room.withUserEmail;
         }else{
             room.messageList.push(Selfmsg);
         }
         room.save();
-    })
+    });
+    let user = await User.find({email:Nuser});
+    console.log(user.notification);
+    user.notification =true;
+    user.save();
+    console.log(user.notification);
 
 }

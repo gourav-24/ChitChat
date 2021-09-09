@@ -79,18 +79,18 @@
 
         
             <% for (post of posts){ %>
-                <div id="post">
-                    <div id="post-image">
+                <div class="post" data-id="<%= post._id  %>">
+                    <div class="post-image">
                         <img src="<%= post.picture %>" alt="posts image" width="100px">
     
                     </div>
-                    <div id="post-content-like-delete">
+                    <div class="post-content-like-delete">
                 
-                        <div id="post-content">
+                        <div class="post-content">
                             <%= post.content %>
     
                         </div>
-                        <div id="post-like">
+                        <div class="post-like">
                             <% if(locals.user){ %>
                     
                                 <a class="toggle-like-button" data-like="<%=post.likes.length%>" href="/likes/toggle/?id=<%=post.id%>&type=Post">
@@ -106,7 +106,7 @@
                             <% } %>
     
                         </div>
-                        <div id="post-delete">
+                        <div class="post-delete">
                             <% if((locals.user)&&( locals.user.id == post.user.id )){ %>
                                 <small>
                                     <a class="delete-post-button" href="/post/destroy/<%= post._id %>"> <span class="material-icons">
@@ -132,6 +132,28 @@
     </div>
 
     
+    <div class="modal-bg">
+        <div  id="modal">
+          <span>
+            <h3>
+              Do u want to delete this chat?
+            </h3>
+  
+          </span>
+          <div id="modal-close">+</div>
+          <div id="button-label">
+            <label for="btn"> <a id="link" style="text-decoration: none;" href="/users/chatBox">Delete Chat</a></label>
+  
+          </div>
+          <div id="button">
+            <input id="btn" type="submit">
+  
+          </div>
+        </div>
+      </div>
+
+
+    
     <% }else{ %>
         <a href="/users/sign-in">sign in</a>
         <a href="/users/sign-up">sign up</a>
@@ -139,10 +161,16 @@
     <% } %>
 
 
-
-
-
     <script src="/js/toggle_likes.js"></script>
+    <script src="/js/detail-post.js"></script>
+    <script>
+        $(".post").each(function(){
+            let self =this;
+            let id = $(self).attr("data-id");
+            let Post = new detailPost(self,id);
+        })
+
+    </script>
     <script>
 
         $(".toggle-like-button").each(function () {

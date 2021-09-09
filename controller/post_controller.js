@@ -52,3 +52,20 @@ module.exports.destroy = async function(req,res){
     }
 
 }
+
+module.exports.find = function (req,res){
+    try{
+        console.log(req.query);
+
+        if(req.xhr){
+            res.status(200).json({
+                message:"message"
+
+            });
+        }
+
+    }catch(err){
+        console.log("error in find method of post Controller",err);
+
+    }
+}
