@@ -1,5 +1,7 @@
 const mongoose =require('mongoose');
-mongoose.connect('mongodb://localhost/Chit-Chat');
+const env = require('./enviroment');
+// Add thge database name in environment file and fetch it from there 
+mongoose.connect(`mongodb://localhost/'${env.db}`);
 const db = mongoose.connection;  // require connection of db
 
 // handling error
