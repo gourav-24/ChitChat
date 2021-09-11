@@ -54,7 +54,7 @@ module.exports.Sign_In = function (req, res) {
     if (req.isAuthenticated()) {
       return res.redirect("/users/profile");
     }
-    return res.render("sign_In");
+    return res.render("sign_in");
   } catch (err) {
     console.log("error in loading Sign In controller", err);
   }
