@@ -1,7 +1,7 @@
 const express = require('express');
 const env = require('./config/enviroment');
 const app = express();
-const Port = 5000;
+const Port = 8000;
 const db = require('./config/mongoose');
 const session = require('express-session');
 const passport = require('passport');
@@ -15,7 +15,7 @@ const chatServer = require('http').Server(app);
 const chatSockets = require('./config/chat_sockets').chatSockets(chatServer);
 
 chatServer.listen(5000);
-console.log("chat server is listining on port 5000");
+console.log("chat server is listining on port 6000");
 
 
 app.use(SassMiddleware({
@@ -27,7 +27,7 @@ app.use(SassMiddleware({
 
 }));
 
-app.use(express.urlencoded()); // to parse or convert form data of post method
+app.use(express.urlencoded({extended:false})); // to parse or convert form data of post method
 app.use(express.static(env.asset_path));
 
 app.use('/uploads',express.static(__dirname+'/uploads'));
