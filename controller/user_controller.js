@@ -52,6 +52,7 @@ module.exports.Sign_up = function (req, res) {
 module.exports.Sign_In = function (req, res) {
   try {
     if (req.isAuthenticated()) {
+
       return res.redirect("/users/profile");
     }
     return res.render("sign_in");
