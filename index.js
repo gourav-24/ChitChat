@@ -1,7 +1,7 @@
 const express = require('express');
 const env = require('./config/enviroment');
 const app = express();
-const Port = 8000;
+const Port = process.env.PORT || 8000;
 const db = require('./config/mongoose');
 const session = require('express-session');
 const passport = require('passport');
@@ -15,7 +15,7 @@ const chatServer = require('http').Server(app);
 const chatSockets = require('./config/chat_sockets').chatSockets(chatServer);
 
 chatServer.listen(5000);
-console.log("chat server is listining on port 6000");
+console.log("chat server is listining on port 5000");
 
 
 app.use(SassMiddleware({
@@ -61,5 +61,5 @@ app.listen(Port, function(err){
     if(err){
         console.log("Error in starting the server",err);
     }
-    console.log("server is up and running!!");
+    console.log(`server is up and running on port:${Port}`);
 });
