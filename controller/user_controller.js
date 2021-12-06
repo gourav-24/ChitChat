@@ -2,7 +2,7 @@ const User = require("../models/user");
 const Post = require("../models/post");
 const customMWare = require("../config/middleware");
 
-module.exports.profile = async function (req, res) {
+module.exports.profile = async function (req, res, next) {
   try {
     let user_req = await User.findById(req.params.id);
     let post = await Post.find({ user: user_req._id })
