@@ -1,8 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title><%= user_visited.name %></title>
-    <link rel="icon" href="../uploads/picture-1590430559977" type="image/x-icon">
+
+    
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
@@ -13,14 +10,7 @@
           
     <link rel="stylesheet" href="/css/header.css" />
     <link rel="stylesheet" href="/css/user_profile.css">
-</head>
-<body>
 
-    <header>
-        
-            <%- include('_header'); %>
-        
-    </header>
 
     <% if(locals.user){ %>
 
@@ -179,9 +169,3 @@
         });
     </script>
     <script src="/js/update-form.js"></script> 
-    
-    
-
-
-</body>
-</html>

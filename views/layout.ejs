@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- title -->
+    <title><%= title %></title>
+    <!-- icon image -->
+    <link
+      rel="icon"
+      href="../uploads/picture-1590430559977"
+      type="image/x-icon"
+    />
+
+    <!-- JQuery script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <!-- Noty style sheet and script -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.js"></script>
+
+    <!-- styles from body pages  -->
+    <%- style %>
+  </head>
+  <body>
+    <!-- hidden flash messages so that helper script can pick notifications -->
+    <% if(flash.success && flash.success.length>0 ){ %>
+
+    <div id="Snotification" style="display: none"><%= flash.success %></div>
+
+    <% } %> <% if(flash.error && flash.error.length>0 ){ %>
+
+    <div id="errorNotification" style="display: none"><%= flash.error %></div>
+
+    <% } %> <% if(locals.user){ %>
+    <header><%- include('_header'); %></header>
+    <% } %> <%- body %>
+
+    <!-- script from body pages -->
+    <script src="/js/notification.js"></script>
+    <%- script %>
+  </body>
+</html>

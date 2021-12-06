@@ -1,12 +1,16 @@
 const User = require("../models/user");
 const Post = require("../models/post");
 const Like = require("../models/likes");
+const customMWare = require("../config/middleware");
 
-module.exports.home = async function (req, res) {
+module.exports.home = async function (req, res, next) {
   try {
+    if (!req.isAuthenticated()) {
+      return res.redirect("/users/sign-in");
+    }
     let posts;
     let allUsers;
-    if (req.user){
+    if (req.user) {
       let userReq = await User.findById(req.user._id);
       let arrayOfUsers = userReq.following;
       console.log(arrayOfUsers);
@@ -28,12 +32,13 @@ module.exports.home = async function (req, res) {
       allUsers = await User.find({ _id: { $nin: arrayOfUsers } });
     }
 
+    customMWare.setFlash(req, res, next);
     return res.render("home", {
       posts: posts,
       users: allUsers,
       title: "Home",
     });
   } catch (err) {
-    console.log("error in loading home controller",err);
+    console.log("error in loading home controller", err);
   }
 };

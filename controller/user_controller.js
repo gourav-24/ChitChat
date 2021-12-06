@@ -1,5 +1,6 @@
 const User = require("../models/user");
 const Post = require("../models/post");
+const customMWare = require("../config/middleware");
 
 module.exports.profile = async function (req, res) {
   try {
@@ -13,49 +14,55 @@ module.exports.profile = async function (req, res) {
         },
       });
 
-      let viewer = await User.findById(req.user.id);
+    let viewer = await User.findById(req.user.id);
 
-      let is_user_reqInFollowing =await viewer.following.find(u=> u==req.params.id);
-      console.log(is_user_reqInFollowing);
-      let userInFollowing =false;
-      if(is_user_reqInFollowing){
-        console.log('working');
-        userInFollowing=true;
-      }
-      console.log(userInFollowing);
+    let is_user_reqInFollowing = await viewer.following.find(
+      (u) => u == req.params.id
+    );
+    console.log(is_user_reqInFollowing);
+    let userInFollowing = false;
+    if (is_user_reqInFollowing) {
+      console.log("working");
+      userInFollowing = true;
+    }
+    console.log(userInFollowing);
 
+    customMWare.setFlash(req, res, next);
 
-
-    
-      
-    res.render("profile", {
+    return res.render("profile", {
       user_visited: user_req,
       posts: post,
-      following:userInFollowing
+      following: userInFollowing,
+      title: user_req.name,
     });
   } catch (err) {
     console.log("error in loading profile controller", err);
   }
 };
 
-module.exports.Sign_up = function (req, res) {
+module.exports.Sign_up = function (req, res, next) {
   try {
-    if(req.isAuthenticated()) {
+    if (req.isAuthenticated()) {
       return res.redirect("/users/profile");
     }
-    return res.render("sign_up");
+    customMWare.setFlash(req, res, next);
+    return res.render("sign_up", {
+      title: "Sign Up",
+    });
   } catch (err) {
     console.log("error in loading Sign Up controller", err);
   }
 };
 
-module.exports.Sign_In = function (req, res) {
+module.exports.Sign_In = function (req, res, next) {
   try {
     if (req.isAuthenticated()) {
-
       return res.redirect("/users/profile");
     }
-    return res.render("sign_in");
+    customMWare.setFlash(req, res, next);
+    return res.render("sign_in", {
+      title: "Sign In",
+    });
   } catch (err) {
     console.log("error in loading Sign In controller", err);
   }
@@ -65,7 +72,8 @@ module.exports.Sign_In = function (req, res) {
 module.exports.create = function (req, res) {
   try {
     if (req.body.password != req.body.conformPassword) {
-      return res.redirect("back");
+      req.flash("error", "Password and confirm password doesnt match");
+      return res.redirect("/users/sign-up");
     }
 
     User.findOne({ email: req.body.email }, function (err, user) {
@@ -87,9 +95,17 @@ module.exports.create = function (req, res) {
             return;
           }
         });
-        return res.redirect("/users/sign-in");
+        req.flash(
+          "success",
+          "User Created Successfully, Sign In from Sign In page"
+        );
+        return res.redirect("/users/sign-up");
       } else {
-        return res.redirect("/users/sign-in");
+        req.flash(
+          "success",
+          `User with email: ${req.body.email} already exist.`
+        );
+        return res.redirect("/users/sign-up");
       }
     });
   } catch (err) {
@@ -117,6 +133,7 @@ module.exports.createSession = function (req, res) {
 module.exports.destroySession = function (req, res) {
   try {
     req.logout(); // method by passport
+    req.flash("success", "Logged out successfully");
     return res.redirect("/");
   } catch (err) {
     console.log("error in loading destroySession controller", err);
@@ -149,8 +166,11 @@ module.exports.update = async function (req, res) {
         }
         user.save();
         console.log(user.avatar);
+        req.flash("success", "Profile picture updated");
+        return res.redirect("back");
       });
 
+      req.flash("success", "Profile is not updated");
       return res.redirect("back");
     } catch (err) {
       console.log("error in update method of user controller of user", err);
@@ -209,29 +229,23 @@ module.exports.addFollower = async function (req, res) {
   }
 };
 
-
-module.exports.removeFollower = async function(req,res){
-  try{
+module.exports.removeFollower = async function (req, res) {
+  try {
     console.log(req.params);
-     let req_user = await User.findById({_id:req.user.id});
+    let req_user = await User.findById({ _id: req.user.id });
 
-    let isExist = await req_user.following.find(u=> u==req.params.id );
-    if(isExist){
+    let isExist = await req_user.following.find((u) => u == req.params.id);
+    if (isExist) {
       req_user.following.pull(req.params.id);
       req_user.save();
-      
-      let user_unfollowed = await User.findById({_id:req.params.id});
+
+      let user_unfollowed = await User.findById({ _id: req.params.id });
       user_unfollowed.followers.pull(req.user.id);
       user_unfollowed.save();
-
     }
 
-
-
-    return res.redirect('back');
-
-
-  }catch(err){
-    console.log('error in remove follower method of user controller',err);
+    return res.redirect("back");
+  } catch (err) {
+    console.log("error in remove follower method of user controller", err);
   }
-}
+};

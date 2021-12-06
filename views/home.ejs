@@ -1,134 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title><%= title %></title>
-        <link rel="icon" href="../uploads/picture-1590430559977" type="image/x-icon">
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+  integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+  crossorigin="anonymous"
+/>
 
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
-        
-        
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-          
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+/>
 
-        <link rel="stylesheet" href="/css/home.css" />
-        <link rel="stylesheet" href="/css/header.css" />
-        <link rel="stylesheet" href="/css/userList.css">
-    </head>
-    <body>
+<link rel="stylesheet" href="/css/home.css" />
+<link rel="stylesheet" href="/css/header.css" />
+<link rel="stylesheet" href="/css/userList.css" />
 
+<% if(locals.user){ %>
 
-    <% if(locals.user){ %>
-        <header>
-            <%- include('_header'); %>
-        </header>
-            
-            <div id="total-area">
-                
-                <div class="post-area">
-                    <div id="show-form" >
-                        New Post
-                    </div>
+<div id="total-area">
+  <div class="post-area">
+    <div id="show-form">New Post</div>
 
-                <% for (post of posts){ %> <%- include('_posts'); %> <% } %>
+    <% for (post of posts){ %> <%- include('_posts'); %> <% } %>
 
+    <div id="go-to-top">
+      <a href="#show-form">Go to top</a>
+    </div>
+  </div>
 
-                    <div id="go-to-top">
-                        <a href="#show-form">Go to top</a>
-                    </div>
-      
-                </div>
+  <div class="users-list" style="margin-top: 100px">
+    <span style="font-family: cursive"> Suggested user's </span>
 
+    <% for(user of users){ %>
 
-
-                
-                <div class="users-list" style="margin-top: 100px;">
-                    
-                    <span style="font-family: cursive;">
-                        Suggested user's
-                    </span>
-
-                    <% for(user of users){ %>
-
-                            <div class="user">
-
-                                
-                                    <div class="user-image">
-                                        <img src="<%= user.avatar %>" alt="">
-            
-                                    </div>
-                                    <div class="user-name" >
-                                        <div>
-                                            <a href="/users/profile/<%= user._id %>"><%= user.name %></a>
-                                        </div>
-            
-                                    </div>
-                                    <div class="add-req" data-id="<%= user._id %>">
-                                        Follow
-                                    </div>
-                                    
-                                
-
-
-        
-                                
-        
-                            </div>
-                        
-                        
-                        
-                    
-                    <% } %>
-                    
-                </div>
-
-
-
-
-
-            </div>
-              
-
-            
-
-            
-            
-
-
-
-
-
-
-    <script src="/js/toggle_likes.js"></script>
-    <script src="/js/post-form.js"></script>
-    <script src="/js/add_friend.js"></script>
-    
-    
-    <script>
-
-      $(".toggle-like-button").each(function () {
-        let self = this;
-        let toggleLike = new ToggleLikes(self);
-      });
-    </script>
-
-    <script>
-        $('.add-req').click(function(){
-            let self = this;
-            let id = this.getAttribute('data-id');
-            console.log(self);
-            new AddFriend(id,self);
-
-
-        });
-        
-    </script>
-
-    <% }else{ %>
-    <a href="/users/sign-in">sign in</a>
-    <a href="/users/sign-up">sign up</a>
+    <div class="user">
+      <div class="user-image">
+        <img src="<%= user.avatar %>" alt="" />
+      </div>
+      <div class="user-name">
+        <div>
+          <a href="/users/profile/<%= user._id %>"><%= user.name %></a>
+        </div>
+      </div>
+      <div class="add-req" data-id="<%= user._id %>">Follow</div>
+    </div>
 
     <% } %>
-  </body>
-</html>
+  </div>
+</div>
+
+<script src="/js/toggle_likes.js"></script>
+<script src="/js/post-form.js"></script>
+<script src="/js/add_friend.js"></script>
+
+<script>
+  $(".toggle-like-button").each(function () {
+    let self = this;
+    let toggleLike = new ToggleLikes(self);
+  });
+</script>
+
+<script>
+  $(".add-req").click(function () {
+    let self = this;
+    let id = this.getAttribute("data-id");
+    console.log(self);
+    new AddFriend(id, self);
+  });
+</script>
+
+<% }else{ %>
+<a href="/users/sign-in">sign in</a>
+<a href="/users/sign-up">sign up</a>
+
+<% } %>
