@@ -167,10 +167,10 @@ module.exports.update = async function (req, res) {
         user.save();
         console.log(user.avatar);
         req.flash("success", "Profile picture updated");
-        return res.redirect("back");
+        //return res.redirect("back");
       });
 
-      req.flash("success", "Profile is not updated");
+      //req.flash("success", "Profile is not updated");
       return res.redirect("back");
     } catch (err) {
       console.log("error in update method of user controller of user", err);
