@@ -1,6 +1,7 @@
 const User = require("../models/user");
 const Post = require("../models/post");
 const customMWare = require("../config/middleware");
+const S3Bucket = require("../config/s3Bucket");
 
 module.exports.profile = async function (req, res, next) {
   try {
@@ -150,19 +151,18 @@ module.exports.update = async function (req, res) {
       //console.log(req); // we arent getting body of rq here but we are getting at next console ??
 
       let user = await User.findById(req.user.id);
-      User.uploadedAvatar(req, res, function (err) {
+      User.uploadedAvatar(req, res, async function (err) {
         if (err) {
           console.log("error in upladedAvatar of user", err);
           return err;
         }
-        //console.log(req.body);
-        //user.name = req.body.name;
-        //user.email = req.body.email;
+        let uploadedImg = await S3Bucket.upload(req.file);
+
         if (req.body.content) {
           user.about = req.body.content;
         }
         if (req.file) {
-          user.avatar = User.avatarPath + "/" + req.file.filename;
+          user.avatar = "/image/" + uploadedImg.key;
         }
         user.save();
         console.log(user.avatar);

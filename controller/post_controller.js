@@ -1,6 +1,7 @@
 const Post = require("../models/post");
 const Like = require("../models/likes");
 const Comment = require("../models/comment");
+const S3Bucket = require("../config/s3Bucket");
 
 // creating post
 module.exports.create = async function (req, res) {
@@ -11,12 +12,23 @@ module.exports.create = async function (req, res) {
         return;
       }
 
+      let uploadedImg = await S3Bucket.upload(req.file);
+
       await Post.create({
         content: req.body.content,
         user: req.user._id,
-        picture: Post.imagePath + "/" + req.file.filename,
+        picture: "/image/" + uploadedImg.key,
       });
     });
+
+    // let uploadedImg = await S3Bucket.upload(req.file);
+    // if (uploadedImg.key) {
+    //   await Post.create({
+    //     content: req.body.content,
+    //     user: req.user._id,
+    //     picture: "/image/" + uploadedImg.key,
+    //   });
+    // }
 
     req.flash("success", "Post created");
 
